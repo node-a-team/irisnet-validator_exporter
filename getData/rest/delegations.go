@@ -7,10 +7,12 @@ import (
 	"strings"
 )
 
+/*
 type delegations struct {
 	Height string `json:"height"`
 	Result []delegation
 }
+*/
 
 type delegation struct {
 	Delegator_address string `json:"delegator_address"`
@@ -26,7 +28,7 @@ type delegationInfo struct {
 
 func getDelegations(accAddr string, log *zap.Logger) delegationInfo {
 
-	var d delegations
+	var d []delegation
 	var dInfo delegationInfo
 
 	res, _ := runRESTCommand("/stake/validators/" + OperAddr + "/delegations")
@@ -40,9 +42,9 @@ func getDelegations(accAddr string, log *zap.Logger) delegationInfo {
 		log.Info("REST-Server", zap.Bool("Success", true), zap.String("err", "nil"), zap.String("Get Data", "Delegations"))
 	}
 
-	dInfo.DelegationCount = float64(len(d.Result))
+	dInfo.DelegationCount = float64(len(d))
 
-	for _, value := range d.Result {
+	for _, value := range d {
 		if accAddr == value.Delegator_address {
 			dInfo.SelfDelegation = utils.StringToFloat64(value.Shares)
 		}
