@@ -15,14 +15,12 @@ import (
 
 func main() {
 
-	port := "26661"
-
 	log, _ := zap.NewDevelopment()
 	defer log.Sync()
 
 	cfg.ConfigPath = os.Args[1]
 
-	cfg.Init()
+	port := cfg.Init()
 	rpc.OpenSocket(log)
 
 	http.Handle("/metrics", promhttp.Handler())

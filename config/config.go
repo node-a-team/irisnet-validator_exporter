@@ -34,7 +34,7 @@ type configType struct {
 	}
 }
 
-func Init() {
+func Init() string {
 
 	Config = readConfig()
 
@@ -42,6 +42,8 @@ func Init() {
 	rest.Addr = Config.Servers.Addr.REST
 
 	rest.OperAddr = Config.Validator.OperatorAddr
+
+	return Config.Options.ListenPort
 
 }
 

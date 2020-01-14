@@ -2,9 +2,10 @@ package rest
 
 import (
 	"encoding/json"
-	utils "github.com/node-a-team/irisnet-validator_exporter/utils"
 	"go.uber.org/zap"
 	"strings"
+
+	utils "github.com/node-a-team/irisnet-validator_exporter/utils"
 )
 
 /*
@@ -15,8 +16,8 @@ type delegations struct {
 */
 
 type delegation struct {
-	Delegator_address string `json:"delegator_address"`
-	Validator_address string `json:"validator_address"`
+	Delegator_address string `json:"delegator_addr"`
+	Validator_address string `json:"validator_addr"`
 	Shares            string `json:"shares"`
 	Balance           string `json:"balance"`
 }
