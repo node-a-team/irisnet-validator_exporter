@@ -67,7 +67,7 @@ Description=IRISnet Validator Exporter
 After=network-online.target
 
 [Service]
-User=cosmos
+User=terra
 WorkingDirectory=/data/iris
 ExecStart=/data/iris/exporter/irisnet-validator_exporter \
         /data/iris/exporter
